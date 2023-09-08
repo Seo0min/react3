@@ -5,7 +5,7 @@ import Icon from "../../assets/icon";
 
 const Button = () => {
   const PrimaryButtonClickHandler = () => {
-    alert("버튼을 만들어보세요");
+    alert("버튼을 만들어보세요!");
   };
 
   const NegativeButtonClickHandler = () => {
