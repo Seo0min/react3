@@ -1,3 +1,3 @@
 
 도메인
-https://react3-cicsfn3tm-seo0min.vercel.app/
+https://react3-rfxtjdo8f-seo0min.vercel.app/
