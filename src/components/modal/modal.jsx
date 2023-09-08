@@ -42,7 +42,7 @@ const Modal = () => {
               </ModalContent>
             </Modals>
           )}
-          ;
+          
         </div>
 
         {/* Modal with Outside Click Close */}
@@ -63,7 +63,7 @@ const Modal = () => {
               </ModalContent>
             </Modals>
           )}
-          ;
+          
         </div>
       </FlexBox>
     </>
@@ -80,8 +80,8 @@ const FirstBtnModal = styled.button`
   display: block;
   font-size: 16px;
   border-radius: 15px;
-  border: 3px solid
-    ${(props) => (props.variant === "outline" ? "yellow" : "pink")};
+  border: 3px solid;
+  ${(props) => (props.variant === "outline" ? "yellow" : "pink")};
   background-color: ${(props) =>
     props.variant === "outline" ? "pink" : "yellow"};
   color: ${(props) => (props.variant === "outline" ? "white" : "black")};

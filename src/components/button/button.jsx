@@ -16,16 +16,16 @@ const Button = () => {
       <FlexBox>
         <FirstBox
           onClick={PrimaryButtonClickHandler}
-          back-color={"yellow"}
-          border-color={"lightblue"}
+          backColor={"yellow"}
+          borderColor={"lightblue"}
         >
           Large Primary Button
         </FirstBox>
-        <SecondBox back-color={"lightblue"} border-color={"yellow"}>
+        <SecondBox backColor={"lightblue"} borderColor={"yellow"}>
           <Icon color={"red"} />
           Medium
         </SecondBox>
-        <ThirdBox back-color={"yellow"} border-color={"lightblue"}>
+        <ThirdBox backColor={"yellow"} borderColor={"lightblue"}>
           {" "}
           Small{" "}
         </ThirdBox>
@@ -33,16 +33,16 @@ const Button = () => {
       <FlexBox>
         <FirstBox
           onClick={NegativeButtonClickHandler}
-          back-color={"yellow"}
-          border-color={"lightblue"}
+          backColor={"yellow"}
+          borderColor={"lightblue"}
         >
           Large Negative Button
         </FirstBox>
-        <SecondBox back-color={"lightblue"} border-color={"yellow"}>
+        <SecondBox backColor={"lightblue"} borderColor={"yellow"}>
           <Icon color={"blue"} />
           Medium
         </SecondBox>
-        <ThirdBox back-color={"yellow"} border-color={"lightblue"}>
+        <ThirdBox backColor={"yellow"} borderColor={"lightblue"}>
           Small
         </ThirdBox>
       </FlexBox>
@@ -55,8 +55,8 @@ const FirstBox = styled.button`
   height: 100px;
   margin: 10px 10px 0px 0px;
   border-radius: 20px;
-  border: 3px solid ${(props) => props["border-color"]};
-  background-color: ${(props) => props["back-color"]};
+  border: 3px solid ${(props) => props["borderColor"]};
+  background-color: ${(props) => props["backColor"]};
   color: black;
 `;
 const SecondBox = styled.button`
@@ -64,8 +64,8 @@ const SecondBox = styled.button`
   height: 100px;
   margin: 10px 10px 0px 0px;
   border-radius: 20px;
-  border: 3px solid ${(props) => props["border-color"]};
-  background-color: ${(props) => props["back-color"]};
+  border: 3px solid ${(props) => props["borderColor"]};
+  background-color: ${(props) => props["backColor"]};
   color: black;
 `;
 const ThirdBox = styled.button`
@@ -73,8 +73,8 @@ const ThirdBox = styled.button`
   height: 70px;
   margin: 10px 10px 0px 0px;
   border-radius: 20px;
-  border: 3px solid ${(props) => props["border-color"]};
-  background-color: ${(props) => props["back-color"]};
+  border: 3px solid ${(props) => props["borderColor"]};
+  background-color: ${(props) => props["backColor"]};
   color: black;
 `;
 

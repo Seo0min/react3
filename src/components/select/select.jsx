@@ -1,63 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import Select2 from "./select2";
+
+const options = ["리액트", "자바", "스프링", "노드"];
 
 const Select = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+  // 1. option은 클릭된 항목을 나타낸다.
+  // 2. option 값을 setSelectedOption 함수에 전달하여 선택된 항목을 업데이트한다.
+  // 3. setIsOpen(false)를 통해 열려 있는 드롭다운을 닫는다.
+
   return (
-    <>
-      <StBox>
-        <Parent>
-          <DropdownContainer>
-            <DropdownLeft>
-              <DropBtnLeft>Select</DropBtnLeft>
+    <StBox>
+      <Parent>
+        <DropdownContainer>
+          <DropdownLeft>
+            <DropBtnLeft onClick={toggleDropdown}>
+              {selectedOption}
+              <ArrowIcon>&#9660;</ArrowIcon>
+            </DropBtnLeft>
+            {isOpen && (
               <DropdownContentLeft>
-                <ItemHover>리액트</ItemHover>
-                <ItemHover>자바</ItemHover>
-                <ItemHover>스프링</ItemHover>
-                <ItemHover>리엑트네이티브</ItemHover>
+                {options.map((option, index) => (
+                  <ItemHover
+                    key={index}
+                    onClick={() => handleOptionClick(option)}
+                  >
+                    {option}
+                  </ItemHover>
+                ))}
               </DropdownContentLeft>
-            </DropdownLeft>
-          </DropdownContainer>
-          {/* 우측 */}
-          <DropdownRight>
-            <DropBtnRight>Select</DropBtnRight>
-            <DropdownContentRight>
-              <ItemHover>리액트</ItemHover>
-              <ItemHover>자바</ItemHover>
-              <ItemHover>스프링</ItemHover>
-              <ItemHover>리엑트네이티브</ItemHover>
-            </DropdownContentRight>
-          </DropdownRight>
-        </Parent>
-      </StBox>
-    </>
+            )}
+            {/* isOpen이 true 일 때만 드롭다운 메뉴의 내용을 보여주고 각 항목을 클릭하면 handleOptionClick 함수가 호출 */}
+          </DropdownLeft>
+        </DropdownContainer>
+        <Select2 />
+      </Parent>
+    </StBox>
   );
 };
 
-const StBox = styled.div`
-  display: flex;
-  margin-bottom: 200px;
-`;
-const Parent = styled.div`
-  overflow-y: auto;
-  /* y축 내용이 어떻게 보여질지 정함 */
-  border: 1px solid blue;
-  width: 800px;
-  height: 80px;
-`;
 const DropBtnLeft = styled.button`
   width: 160px;
   height: 50px;
-  padding: 16px;
   font-size: 16px;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  cursor: pointer;
 `;
+
 const DropdownContentLeft = styled.div`
   display: none;
   position: absolute;
-  text-align: center;
   background-color: #f1f1f1;
   min-width: 160px;
 `;
+
 const DropdownLeft = styled.div`
   width: 160px;
   height: 50px;
@@ -68,7 +79,9 @@ const DropdownLeft = styled.div`
       display: block;
     }
   }
+  /* hover상태에서 DropdownContentLeft 컴포넌트의 스타일 변경 */
 `;
+
 const DropdownContainer = styled.div`
   display: block;
   width: 100px;
@@ -76,37 +89,31 @@ const DropdownContainer = styled.div`
   float: left;
   position: static;
 `;
-/* 우측 */
 
-const DropBtnRight = styled.button`
+const ItemHover = styled.button`
+  display: flex;
   width: 160px;
   height: 50px;
   font-size: 16px;
   border: none;
-  margin-left: 100px;
-`;
-const DropdownContentRight = styled.div`
-  display: none;
-  position: absolute;
-  text-align: center;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  z-index: 1;
-  margin-left: 100px;
-`;
-const DropdownRight = styled.div`
-  position: relative;
-  display: inline-block;
-  &:hover {
-    ${DropdownContentRight} {
-      display: block;
-    }
-  }
-`;
-const ItemHover = styled.p`
   &:hover {
     background-color: lightblue;
   }
 `;
 
+const StBox = styled.div`
+  display: flex;
+  margin-bottom: 200px;
+`;
+
+const Parent = styled.div`
+  overflow-y: auto;
+  border: 1px solid blue;
+  width: 800px;
+  height: 80px;
+`;
+
+const ArrowIcon = styled.span`
+  font-size: 14px;
+`;
 export default Select;
